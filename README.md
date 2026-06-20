@@ -1,39 +1,26 @@
 # AnarchI Core
 
-Core primitives for AnarchI Technologies systems.
+Safe deterministic core primitives for AnarchI Technologies operator workflows.
 
 Hardcoding freedom into the systems of tomorrow.
 
 ## Purpose
 
-AnarchI Core is the foundation layer for reusable automation, orchestration, and operator workflows. The current repository contains an early PowerShell implementation surface and is being shaped into a cleaner platform core.
+AnarchI Core is the public-safe foundation for local operator decisions: target normalization, risk gating, dry-run defaults, and explicit execution boundaries.
 
-## What This Repo Represents
+## What Changed
 
-- Deterministic command and workflow primitives.
-- Local operator tooling for system assembly.
-- Shared foundations that other AnarchI projects can build on.
-- A public-safe view of the architecture without private CERBERUS internals.
+- Removed privileged system mutation, elevation, pagefile, process-cull, and browser-launch behavior from the public repo.
+- Rebuilt the core as a dry-run-first PowerShell policy surface.
+- Added deterministic target and risk gates.
+- Added tests covering baseline, stricter, and adversarial constraints.
 
-## Current Structure
+## Verify
 
-```text
-.
-└── anarchi_core.ps1
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass -File tests\anarchi_core.tests.ps1
 ```
 
-## Development Direction
+## Public Safety
 
-The next production step is to split the current script into reviewed modules:
-
-- `commands/` for operator entrypoints.
-- `lib/` for reusable deterministic functions.
-- `tests/` for fixture-backed validation.
-- `docs/` for public architecture notes.
-
-## Operating Principles
-
-- Keep control flow inspectable.
-- Prefer explicit rules over opaque automation.
-- Treat AI as an escalation path, not the default engine.
-- Keep private strategy, credentials, and live runtime state out of the public repo.
+This repo must not contain destructive system automation, credentials, private runtime state, or unreleased CERBERUS decision chains. Write-capable workflows belong behind reviewed gates and dry-run defaults.
